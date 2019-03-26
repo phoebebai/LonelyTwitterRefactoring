@@ -1,4 +1,4 @@
-package ca.ualberta.cs.lonelytwitter;
+package ca.ualberta.cs.lonelytwitterRefactoring;
 
 import java.util.Date;
 import java.util.List;
@@ -34,7 +34,7 @@ public class LonelyTwitterActivity extends Activity {
 		super.onStart();
 
 		tweetsProvider = new TweetsFileManager(this);
-		tweets = tweetsProvider.loadTweets();
+		tweets = tweetsProvider.loadTweetsRefactoring();
 		adapter = new ArrayAdapter<NormalLonelyTweet>(this, R.layout.list_item,
 				tweets);
 		oldTweetsList.setAdapter(adapter);
@@ -54,7 +54,7 @@ public class LonelyTwitterActivity extends Activity {
 			adapter.notifyDataSetChanged();
 
 			bodyText.setText("");
-			tweetsProvider.saveTweets(tweets);
+			tweetsProvider.saveTweetsRefactoring(tweets);
 		} else {
 			Toast.makeText(this, "Invalid tweet", Toast.LENGTH_SHORT).show();
 		}
@@ -63,7 +63,7 @@ public class LonelyTwitterActivity extends Activity {
 	public void clear(View v) {
 		tweets.clear();
 		adapter.notifyDataSetChanged();
-		tweetsProvider.saveTweets(tweets);
+		tweetsProvider.saveTweetsRefactoring(tweets);
 	}
 
 }

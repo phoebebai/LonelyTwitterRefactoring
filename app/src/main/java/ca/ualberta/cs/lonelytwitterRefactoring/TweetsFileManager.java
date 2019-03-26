@@ -1,4 +1,4 @@
-package ca.ualberta.cs.lonelytwitter;
+package ca.ualberta.cs.lonelytwitterRefactoring;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -14,18 +14,18 @@ import android.util.Log;
 
 public class TweetsFileManager {
 
-	private Context ctx;
+	private Context context;
 
-	public TweetsFileManager(Context ctx) {
-		this.ctx = ctx;
+	public TweetsFileManager(Context context) {
+		this.context = context;
 	}
 
 	@SuppressWarnings("unchecked")
-	public List<NormalLonelyTweet> loadTweets() {
+	public List<NormalLonelyTweet> loadTweetsRefactoring() {
 		List<NormalLonelyTweet> tweets = new ArrayList<NormalLonelyTweet>();
 
 		try {
-			FileInputStream fis = ctx.openFileInput("file.sav");
+			FileInputStream fis = context.openFileInput("file.sav");
 			ObjectInputStream ois = new ObjectInputStream(fis);
 
 			Object o = ois.readObject();
@@ -47,9 +47,9 @@ public class TweetsFileManager {
 		return tweets;
 	}
 
-	public void saveTweets(List<NormalLonelyTweet> tweets) {
+	public void saveTweetsRefactoring(List<NormalLonelyTweet> tweets) {
 		try {
-			FileOutputStream fos = ctx.openFileOutput("file.sav", 0);
+			FileOutputStream fos = context.openFileOutput("file.sav", 0);
 			ObjectOutputStream oos = new ObjectOutputStream(fos);
 
 			oos.writeObject(tweets);
